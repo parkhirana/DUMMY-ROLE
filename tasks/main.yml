@@ -1,0 +1,16 @@
+---
+# tasks file for httpd
+- name: Install Apache
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+    update_cache: yes
+
+- name: Copy index.html to web server
+  ansible.builtin.copy:
+    src: index.html  # This file should be in "roles/httpd/files/"
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+
